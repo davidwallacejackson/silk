@@ -34,14 +34,14 @@ MIDDLEWARE_CLASSES = (
 
 WSGI_APPLICATION = 'wsgi.application'
 
-DB = os.environ['DB']
+DB = os.environ.get('DB') or 'sqlite3'
 if DB == 'postgresql':
     DB = 'postgresql_psycopg2'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.' + DB,
-        'NAME': os.environ['DB_NAME']
+        'NAME': os.environ.get('DB_NAME') or 'silk_project'
     }
 }
 
